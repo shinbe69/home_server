@@ -13,4 +13,8 @@ router.post('/data', (req, res) => {
     }
 })
 
+router.get('/about', (req, res) => {
+    res.send('about us')
+})
+
 module.exports = router
