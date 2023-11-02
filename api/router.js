@@ -10,8 +10,10 @@ router.post('/data', (req, res) => {
     let temperature = req.body.temperature
     if (!gas || !temperature) res.sendStatus(400)
     else {
-        console.log(gas, temperature)
-        res.sendStatus(200)
+        if (gas > 10 || temperature > 50) {
+            res.send('Alert!')
+        }
+        else res.send('Normal!')
     }
 })
 
