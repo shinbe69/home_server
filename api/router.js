@@ -1,10 +1,6 @@
 const express = require('express')
 const router = express.Router()
 
-router.get('/check-health', (req, res) => {
-    res.sendStatus(200)
-})
-
 router.post('/data', (req, res) => {
     let gas = req.body.gas
     let temperature = req.body.temperature
@@ -16,7 +12,5 @@ router.post('/data', (req, res) => {
         else res.send('Normal!')
     }
 })
-
-///
 
 module.exports = router
