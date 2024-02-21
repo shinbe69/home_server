@@ -4,4 +4,5 @@ const temperature = require('./temperature')
 
 router.use('/api/temperature', temperature)
 
+
 module.exports = router
