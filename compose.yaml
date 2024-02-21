@@ -1,0 +1,17 @@
+services:
+  mongodb:
+    image: mongo:7.0.5-jammy
+    ports:
+      - 127.0.0.1:27017:27017
+    volumes:
+      - db:/data/db
+  app:
+    image: node:21-alpine3.18
+    command: sh -c "npm i && npm run dev"
+    depends_on:
+      - mongodb
+    ports:
+      - 127.0.0.1:3001:3001
+
+volumes:
+  db:
