@@ -1,17 +1,17 @@
 services:
-  mongodb:
+  db:
     image: mongo:7.0.5-jammy
+    restart: unless-stopped
     ports:
       - 127.0.0.1:27017:27017
-    volumes:
-      - db:/data/db
   app:
     image: node:21-alpine3.18
     command: sh -c "npm i && npm run dev"
+    restart: unless-stopped
+    working_dir: /app
+    volumes:
+      - ./:/app
     depends_on:
-      - mongodb
+      - db
     ports:
       - 127.0.0.1:3001:3001
-
-volumes:
-  db:

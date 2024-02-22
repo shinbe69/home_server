@@ -11,7 +11,7 @@ router.get('/', (req, res) => {
         temperatureValues.forEach((temperature) => {
             sum += temperature.value
         })
-        res.json({ value: sum/3, updateAt: temperatureValues[2].collectAt.toLocaleString() })
+        res.json({ value: sum/3, updateAt: temperatureValues[temperatureValues.length -1].collectAt.toLocaleString() })
     })
     .catch(err => {
         console.log(err)
@@ -20,7 +20,7 @@ router.get('/', (req, res) => {
 })
 
 router.post('/', (req, res) => {
-    let temperatureValue = req.query.temperature
+    let temperatureValue = req.body.temperature
     if (!temperatureValue) res.sendStatus(400)
     else {
         Temperature.create({value: temperatureValue})
